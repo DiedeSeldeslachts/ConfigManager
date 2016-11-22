@@ -1,0 +1,20 @@
+﻿ConfigManager
+
+
+winexe
+C#
+.cs
+C:\Users\DiedeSeldeslachts\Documents\Visual Studio 2015\Projects\ConfigManager\ConfigManager\obj\Debug\
+ConfigManager
+none
+false
+DEBUG;TRACE
+C:\Users\DiedeSeldeslachts\Documents\Visual Studio 2015\Projects\ConfigManager\ConfigManager\App.xaml
+4-1329080496
+
+21-220450849
+71461995427
+MainWindow.xaml;View\AddConfigWindow.xaml;View\AddDomainWindow.xaml;View\AddProtocolWindow.xaml;
+
+True
+
