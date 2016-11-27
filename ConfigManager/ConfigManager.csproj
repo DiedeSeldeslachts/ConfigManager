@@ -80,6 +80,7 @@
     <Compile Include="Data\IXmlRepository.cs" />
     <Compile Include="DI\IocInitializer.cs" />
     <Compile Include="Helpers\ISavable.cs" />
+    <Compile Include="Helpers\ObservableCascadeCollection.cs" />
     <Compile Include="Helpers\ObservableObjectExtender.cs" />
     <Compile Include="ViewModel\ViewModelBaseExtended.cs" />
     <Compile Include="Model\ConnectionConfig.cs" />

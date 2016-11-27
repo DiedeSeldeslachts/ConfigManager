@@ -64,7 +64,10 @@
                 </i:Interaction.Triggers>
                 <TreeView.ItemTemplate>
                     <HierarchicalDataTemplate DataType="{x:Type model:Domain}" >
-                        <TextBlock Text="{Binding Name}" />
+                        <DockPanel>
+                            <TextBlock DockPanel.Dock="Left"  Text="{Binding Name}" />
+                            <Button DockPanel.Dock="Right" Command="{Binding Path=Main.DeleteConfigCommand, Source={StaticResource Locator}}" CommandParameter="{Binding Path=SelectedItem, ElementName=DomainTreeView}">X</Button>
+                        </DockPanel>
                     </HierarchicalDataTemplate>
                 </TreeView.ItemTemplate>
             </TreeView>
@@ -77,7 +80,10 @@
                 </i:Interaction.Triggers>
                 <TreeView.ItemTemplate>
                     <HierarchicalDataTemplate DataType="{x:Type model:Protocol}" >
-                        <TextBlock Text="{Binding Name}" />
+                        <DockPanel>
+                            <TextBlock DockPanel.Dock="Left" Text="{Binding Name}" />
+                            <Button DockPanel.Dock="Right" Command="{Binding Path=Main.DeleteProtocolCommand, Source={StaticResource Locator}}" CommandParameter="{Binding Path=SelectedItem, ElementName=ProtocolTreeView}">X</Button>
+                        </DockPanel>
                     </HierarchicalDataTemplate>
                 </TreeView.ItemTemplate>
             </TreeView>
@@ -90,7 +96,10 @@
                 </i:Interaction.Triggers>
                 <TreeView.ItemTemplate>
                     <HierarchicalDataTemplate DataType="{x:Type model:ConnectionConfig}" >
-                        <TextBlock Text="{Binding Name}" />
+                        <DockPanel HorizontalAlignment="Stretch">
+                            <TextBlock DockPanel.Dock="Left" Text="{Binding Name}"/>
+                            <Button DockPanel.Dock="Right" Command="{Binding Path=Main.DeleteConfigCommand, Source={StaticResource Locator}}" CommandParameter="{Binding Path=SelectedItem, ElementName=ConfigTreeView}">X</Button>
+                        </DockPanel>
                     </HierarchicalDataTemplate>
                 </TreeView.ItemTemplate>
             </TreeView>

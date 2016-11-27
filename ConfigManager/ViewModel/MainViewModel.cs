@@ -47,9 +47,14 @@ namespace ConfigManager.ViewModel
                 RaisePropertyChanged("DomainManager");
             }
         }
-        public Domain CurrentDomain {
+        public Domain CurrentDomain
+        {
             get
             {
+                if (_domainManager == null)
+                {
+                    return new Domain() { Name = "Domain1" };
+                }
                 return _currentDomain;
             }
             set
@@ -58,9 +63,14 @@ namespace ConfigManager.ViewModel
                 RaisePropertyChanged("CurrentDomain");
             }
         }
-        public Protocol CurrentProtocol {
+        public Protocol CurrentProtocol
+        {
             get
             {
+                if (_currentProtocol == null)
+                {
+                    return new Protocol() { Name = "Domain1" };
+                }
                 return _currentProtocol;
             }
             set
@@ -69,7 +79,8 @@ namespace ConfigManager.ViewModel
                 RaisePropertyChanged("CurrentProtocol");
             }
         }
-        public ConnectionConfig CurrentConfig {
+        public ConnectionConfig CurrentConfig
+        {
             get
             {
                 return _currentConfig;
@@ -112,6 +123,21 @@ namespace ConfigManager.ViewModel
             get;
             private set;
         }
+        public RelayCommand<string> DeleteDomainCommand
+        {
+            get;
+            private set;
+        }
+        public RelayCommand<string> DeleteProtocolCommand
+        {
+            get;
+            private set;
+        }
+        public RelayCommand<ConnectionConfig> DeleteConfigCommand
+        {
+            get;
+            private set;
+        }
         public RelayCommand<Domain> ChangeDomainCommand
         {
             get;
@@ -140,6 +166,9 @@ namespace ConfigManager.ViewModel
             AddDomainCommand = new RelayCommand<string>(AddDomain);
             AddProtocolCommand = new RelayCommand<string>(AddProtocol);
             AddConfigCommand = new RelayCommand<ConnectionConfig>(AddConfig);
+            DeleteDomainCommand = new RelayCommand<string>(AddDomain);
+            DeleteProtocolCommand = new RelayCommand<string>(AddProtocol);
+            DeleteConfigCommand = new RelayCommand<ConnectionConfig>(AddConfig);
             ChangeDomainCommand = new RelayCommand<Domain>(ChangeDomain);
             ChangeProtocolCommand = new RelayCommand<Protocol>(ChangeProtocol);
             ChangeConfigCommand = new RelayCommand<ConnectionConfig>(ChangeConfig);
@@ -172,11 +201,7 @@ namespace ConfigManager.ViewModel
             {
                 Name = name
             };
-            if(DomainManager != null)
-            {
-                DomainManager.Domains.Add(domain);
-            }
-            
+            DomainManager.Domains.Add(domain);
         }
         public void AddProtocol(string name)
         {
@@ -184,17 +209,24 @@ namespace ConfigManager.ViewModel
             {
                 Name = name
             };
-            if (CurrentDomain != null)
-            {
-                CurrentDomain.ProtocolSubdevisions.Add(protocol);
-            }
+            CurrentDomain.ProtocolSubdevisions.Add(protocol);
         }
         public void AddConfig(ConnectionConfig config)
         {
-            if(CurrentProtocol != null)
-            {
-                CurrentProtocol.ConnectionConfigs.Add(config);
-            }
+            CurrentProtocol.ConnectionConfigs.Add(config);
+        }
+
+        public void DeleteDomain(Domain domain)
+        {
+            DomainManager.Domains.Add(domain);
+        }
+        public void DeleteProtocol(Protocol protocol)
+        {
+            CurrentDomain.ProtocolSubdevisions.Remove(protocol);
+        }
+        public void DeleteConfig(ConnectionConfig config)
+        {
+            CurrentProtocol.ConnectionConfigs.Remove(config);
         }
         public void ChangeDomain(Domain domain)
         {

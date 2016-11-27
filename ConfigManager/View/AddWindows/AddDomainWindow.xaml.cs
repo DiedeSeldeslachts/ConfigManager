@@ -28,15 +28,9 @@ namespace ConfigManager.View.AddWindows
             InitializeComponent();
         }
 
-        //private void AddButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    Domain domain = new Domain()
-        //    {
-        //        Name = NameText.Text
-        //    };
-
-        //    MainViewModel viewModel = ServiceLocator.Current.GetInstance<MainViewModel>();
-        //    viewModel.Domains.Add(domain);
-        //}
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
