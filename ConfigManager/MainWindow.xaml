@@ -7,6 +7,7 @@
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
         xmlns:local="clr-namespace:ConfigManager"
         xmlns:model="clr-namespace:ConfigManager.Model"
+        xmlns:views="clr-namespace:ConfigManager.View"
         mc:Ignorable="d"
         Title="MainWindow" Height="400" Width="998.81"
         DataContext="{Binding Path=Main, Source={StaticResource Locator}}"
@@ -55,7 +56,7 @@
                 <ColumnDefinition Width="5"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <TreeView Name="DomainTreeView" Grid.Column="0" ItemsSource="{Binding Path=Domains}">
+            <TreeView Name="DomainTreeView" Grid.Column="0" ItemsSource="{Binding Path=DomainManager.Domains}">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="SelectedItemChanged">
                         <cmd:EventToCommand Command="{Binding Path=ChangeDomainCommand}" CommandParameter="{Binding Path=SelectedItem, ElementName=DomainTreeView}" />
@@ -94,7 +95,7 @@
                 </TreeView.ItemTemplate>
             </TreeView>
             <GridSplitter Grid.Column="5" HorizontalAlignment="Stretch"/>
-            <StackPanel Grid.Column="6" />
+            <views:ConfigDetailsView Grid.Column="6"></views:ConfigDetailsView>
         </Grid>
     </Grid>
 </Window>

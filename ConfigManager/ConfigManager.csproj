@@ -52,6 +52,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmLightLibs.5.3.0.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
@@ -78,20 +79,26 @@
     <Compile Include="Data\ConfigRepository.cs" />
     <Compile Include="Data\IXmlRepository.cs" />
     <Compile Include="DI\IocInitializer.cs" />
+    <Compile Include="Helpers\ISavable.cs" />
+    <Compile Include="Helpers\ObservableObjectExtender.cs" />
+    <Compile Include="ViewModel\ViewModelBaseExtended.cs" />
     <Compile Include="Model\ConnectionConfig.cs" />
     <Compile Include="Model\DomainCollection.cs" />
     <Compile Include="Model\Protocol.cs" />
     <Compile Include="Model\Domain.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="DI\ViewModelLocator.cs" />
-    <Compile Include="View\AddConfigWindow.xaml.cs">
+    <Compile Include="View\AddWindows\AddConfigWindow.xaml.cs">
       <DependentUpon>AddConfigWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\AddDomainWindow.xaml.cs">
+    <Compile Include="View\AddWindows\AddDomainWindow.xaml.cs">
       <DependentUpon>AddDomainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\AddProtocolWindow.xaml.cs">
+    <Compile Include="View\AddWindows\AddProtocolWindow.xaml.cs">
       <DependentUpon>AddProtocolWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ConfigDetailsView.xaml.cs">
+      <DependentUpon>ConfigDetailsView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -105,15 +112,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\AddConfigWindow.xaml">
+    <Page Include="View\AddWindows\AddConfigWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\AddDomainWindow.xaml">
+    <Page Include="View\AddWindows\AddDomainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\AddProtocolWindow.xaml">
+    <Page Include="View\AddWindows\AddProtocolWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ConfigDetailsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

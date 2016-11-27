@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace ConfigManager.View
 {
     /// <summary>
-    /// Interaction logic for AddProtocolWindow.xaml
+    /// Interaction logic for ConfigDetailsView.xaml
     /// </summary>
-    public partial class AddProtocolWindow : Window
+    public partial class ConfigDetailsView : UserControl
     {
-        public AddProtocolWindow()
+        public ConfigDetailsView()
         {
             InitializeComponent();
         }

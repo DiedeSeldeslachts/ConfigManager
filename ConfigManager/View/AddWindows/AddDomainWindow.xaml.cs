@@ -16,7 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ConfigManager.View
+namespace ConfigManager.View.AddWindows
 {
     /// <summary>
     /// Interaction logic for AddWindow.xaml

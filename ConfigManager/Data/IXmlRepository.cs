@@ -10,5 +10,6 @@ namespace ConfigManager.Data
     {
         string XmlDocumentPath { get; set; }
         T GetContents();
+        void SaveContents(T contents);
     }
 }

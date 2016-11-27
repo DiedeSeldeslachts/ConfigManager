@@ -1,9 +1,14 @@
 using ConfigManager.Data;
 using ConfigManager.Model;
 using ConfigManager.View;
+using ConfigManager.View.AddWindows;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Ioc;
+using System;
+using System.Collections.Specialized;
+using System.ComponentModel;
+using System.Diagnostics;
 
 namespace ConfigManager.ViewModel
 {
@@ -21,25 +26,25 @@ namespace ConfigManager.ViewModel
     /// </summary>
     public class MainViewModel : ViewModelBase
     {
-        private DomainCollection _domains;
+        private DomainCollection _domainManager;
         private Domain _currentDomain;
         private Protocol _currentProtocol;
         private ConnectionConfig _currentConfig;
 
-        public DomainCollection Domains
+        public DomainCollection DomainManager
         {
             get
             {
-                if (_domains == null)
+                if (_domainManager == null)
                 {
-                    _domains = SimpleIoc.Default.GetInstance<IXmlRepository<DomainCollection>>().GetContents();
+                    _domainManager = SimpleIoc.Default.GetInstance<IXmlRepository<DomainCollection>>().GetContents();
                 }
-                return _domains;
+                return _domainManager;
             }
             set
             {
-                _domains = value;
-                RaisePropertyChanged("Domains");
+                _domainManager = value;
+                RaisePropertyChanged("DomainManager");
             }
         }
         public Domain CurrentDomain {
@@ -138,6 +143,7 @@ namespace ConfigManager.ViewModel
             ChangeDomainCommand = new RelayCommand<Domain>(ChangeDomain);
             ChangeProtocolCommand = new RelayCommand<Protocol>(ChangeProtocol);
             ChangeConfigCommand = new RelayCommand<ConnectionConfig>(ChangeConfig);
+            DomainManager.PropertyChanged += ChangeProperty;
         }
 
         #region Command methods
@@ -166,9 +172,9 @@ namespace ConfigManager.ViewModel
             {
                 Name = name
             };
-            if(Domains != null)
+            if(DomainManager != null)
             {
-                Domains.Add(domain);
+                DomainManager.Domains.Add(domain);
             }
             
         }
@@ -203,5 +209,16 @@ namespace ConfigManager.ViewModel
             CurrentConfig = config;
         }
         #endregion
+
+        public void SaveConfig()
+        {
+            SimpleIoc.Default.GetInstance<IXmlRepository<DomainCollection>>().SaveContents(DomainManager);
+        }
+
+        private void ChangeProperty(object sender, EventArgs e)
+        {
+            //Debug.WriteLine("called!!!! YAAAAAY!");
+            SaveConfig();
+        }
     }
 }
