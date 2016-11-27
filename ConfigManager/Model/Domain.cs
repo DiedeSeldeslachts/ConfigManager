@@ -22,7 +22,8 @@ namespace ConfigManager.Model
 
         private string _name;
         private ObservableCollection<Protocol> _protocolSubdevisions;
-        public string Name {
+        public string Name
+        {
             get
             {
                 return _name;
@@ -33,10 +34,11 @@ namespace ConfigManager.Model
                 RaisePropertyChanged("Name");
             }
         }
-        public ObservableCollection<Protocol> ProtocolSubdevisions {
+        public ObservableCollection<Protocol> ProtocolSubdevisions
+        {
             get
             {
-                if(_protocolSubdevisions == null) { _protocolSubdevisions = new ObservableCollection<Protocol>(); }
+                if (_protocolSubdevisions == null) { _protocolSubdevisions = new ObservableCollection<Protocol>(); }
                 return _protocolSubdevisions;
             }
             set
